@@ -1,0 +1,244 @@
+/* WeddingForge 2026 — PDF Stylesheet */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap");
+
+:root {
+  --cream: #faf7f2;
+  --warm-dark: #2c2416;
+  --sage: #6b7f5e;
+  --dusty-rose: #c4917a;
+  --rule-line: #d4c5b0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans 3", Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.65;
+  color: var(--warm-dark);
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page setup */
+@page {
+  size: 8.5in 11in;
+  margin: 1in 1.1in 1in 1.1in;
+  @bottom-center {
+    content: counter(page);
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 9pt;
+    color: #888;
+  }
+}
+
+/* Headings */
+h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 26pt;
+  font-weight: 700;
+  color: var(--warm-dark);
+  line-height: 1.2;
+  margin: 0 0 8pt 0;
+  padding-bottom: 8pt;
+  border-bottom: 2px solid var(--dusty-rose);
+  page-break-before: always;
+}
+
+h1:first-child {
+  page-break-before: avoid;
+}
+
+h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 16pt;
+  font-weight: 600;
+  color: var(--sage);
+  margin: 24pt 0 8pt 0;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--warm-dark);
+  margin: 16pt 0 6pt 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--dusty-rose);
+  margin: 12pt 0 4pt 0;
+  page-break-after: avoid;
+}
+
+/* Body text */
+p {
+  margin: 0 0 10pt 0;
+  orphans: 3;
+  widows: 3;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--warm-dark);
+}
+
+em {
+  font-style: italic;
+  color: #555;
+}
+
+/* Blockquotes — used for Rule callouts */
+blockquote {
+  border-left: 4px solid var(--dusty-rose);
+  background: #fdf8f3;
+  margin: 14pt 0;
+  padding: 10pt 14pt;
+  border-radius: 0 4px 4px 0;
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0;
+  font-size: 10.5pt;
+  color: var(--warm-dark);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12pt 0;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: var(--warm-dark);
+  color: white;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6pt 8pt;
+  text-align: left;
+}
+
+td {
+  padding: 5pt 8pt;
+  border-bottom: 1px solid var(--rule-line);
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: #fafaf8;
+}
+
+tr:last-child td {
+  border-bottom: 2px solid var(--rule-line);
+}
+
+/* Task lists / checkboxes */
+ul {
+  margin: 6pt 0 10pt 0;
+  padding-left: 20pt;
+}
+
+li {
+  margin-bottom: 4pt;
+  line-height: 1.55;
+}
+
+li input[type="checkbox"] {
+  margin-right: 6pt;
+  accent-color: var(--sage);
+}
+
+/* Task list items */
+ul li:has(input[type="checkbox"]) {
+  list-style: none;
+  margin-left: -16pt;
+}
+
+/* Code blocks — used for formulas */
+code {
+  font-family: "Courier New", monospace;
+  font-size: 9pt;
+  background: #f0ede8;
+  padding: 1pt 4pt;
+  border-radius: 3px;
+  color: #3a2f1e;
+}
+
+pre {
+  background: #f5f2ed;
+  border: 1px solid var(--rule-line);
+  border-left: 4px solid var(--sage);
+  padding: 10pt 12pt;
+  font-size: 9pt;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 10pt 0;
+  border-radius: 0 4px 4px 0;
+  page-break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Image placeholders */
+p:has(> em:only-child) {
+  background: #f5f2ed;
+  border: 1px dashed var(--rule-line);
+  padding: 8pt 12pt;
+  font-size: 9pt;
+  color: #888;
+  border-radius: 4px;
+  text-align: center;
+  margin: 10pt 0;
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid var(--rule-line);
+  margin: 16pt 0;
+}
+
+/* Page break hints from markdown */
+.page-break {
+  page-break-after: always;
+}
+
+/* Section subtitle (bold italic under h1) */
+h1 + p > strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 13pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--sage);
+}
+
+/* Ordered lists */
+ol {
+  margin: 6pt 0 10pt 0;
+  padding-left: 20pt;
+}
+
+ol li {
+  margin-bottom: 4pt;
+}
